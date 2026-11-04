@@ -3,13 +3,17 @@ window.addEventListener("load", function() {
     event.preventDefault();
     const text = document.querySelector("input#line").value;
     const textArray = text.trim().split(/\s+/);
-    const olElement = document.createElement("ol")
-    textArray.forEach(function(word) {
+    const freq = {};
+    console.log(freq)
+    const ulElement = document.createElement("ul")
+    textArray.forEach(word => {
       const liElement = document.createElement("li");
+      freq[word] = (freq[word] || 0) + 1;
       liElement.append(word);
-      olElement.append(liElement);
+      ulElement.append(liElement);
     });
-    document.body.append(olElement);
+    document.body.append(ulElement);
+    return freq;
   }
   document.querySelector("form").addEventListener("submit", handleForm);
 });
